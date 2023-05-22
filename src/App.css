@@ -1,0 +1,18 @@
+.app {
+  flex-direction: column;
+  outline: 2px solid blue;
+}
+.app__logo {
+  text-transform: lowercase;
+  font-weight: 700;
+}
+
+.accent {
+  color: var(--primary);
+}
+
+.app__flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
