@@ -46,11 +46,12 @@ body {
   padding: 0.5rem;
   width: 500px;
   /* min-height: 100vh; */
-  height: fit-content;
+  /* height: 80vh; */
   margin: auto;
   background-color: var(--bgColor);
   color: var(--text);
   box-shadow: 5px 5px 7px lightgray;
+  overflow-y: scroll;
 }
 
 button {
@@ -62,4 +63,22 @@ button {
   font-family: inherit;
   /* background-color: #1a1a1a; */
   cursor: pointer;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--bgColor); 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: var(--primary); 
+  opacity: 0.5;
 }

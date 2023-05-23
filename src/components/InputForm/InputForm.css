@@ -41,11 +41,21 @@ textarea:focus-visible {
   border: 1.5px solid var(--primary);
 }
 
+.app__coverLetter-wrapper{
+  width: 100%;
+
+}
+
 .coverLetter__head {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+.coverLetter__text {
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+  text-align: justify;
 }
 
 .app__form-submit {

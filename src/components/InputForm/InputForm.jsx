@@ -13,11 +13,8 @@ import "./InputForm.css";
 new ClipboardJS(".copy-btn");
 
 export default function InputForm() {
-  const [showCoverLetter, setShowCoverLetter] = useState(true);
+  // const [showCoverLetter, setShowCoverLetter] = useState(false);
   // const [coverLetterText, setCoverLetterText] = useState(null);
-  const [coverLetterText, setCoverLetterText] = useState(
-    "lorem ipsum dolor sit amor lorem ipsum dolor sit amore kandak kodak huygen"
-  ); //testing
   const [formData, setFormData] = useState({
     job_profile: "",
     min_yoe: "",
@@ -37,10 +34,14 @@ export default function InputForm() {
 
   // handle submit button
   async function handleSubmit() {
-    const response = await getResponse(formData);
-    setCoverLetterText(response);
-    setShowCoverLetter(true);
-    // console.log(coverLetterText);
+    var response = await getResponse(formData);
+    //regEx to remove first 2 <br> tags
+    response = response.replace(/^(<br>){2}/, "");
+    // setShowCoverLetter(true);
+    document.querySelector(".coverLetter__text").innerHTML = response;
+
+    // setCoverLetterText(response);
+    // console.log(response);
   }
 
   return (
@@ -95,22 +96,18 @@ export default function InputForm() {
       <button className="app__form-submit" onClick={handleSubmit}>
         Generate Cover Letter
       </button>
-      {showCoverLetter && (
-        <div className="app__coverLetter-wrapper ">
-          <div className="coverLetter__head">
-            <h3 className="coverLetter__head-text">Cover Letter</h3>
-            {showCoverLetter && (
-              <button
-                className="copy-btn app__flex"
-                data-clipboard-target=".coverLetter__text"
-              >
-                <MdCopyAll />
-              </button>
-            )}
-          </div>
-          <article className="coverLetter__text">{coverLetterText}</article>
+      <div className="app__coverLetter-wrapper ">
+        <div className="coverLetter__head">
+          <h3 className="coverLetter__head-text">Cover Letter</h3>
+          <button
+            className="copy-btn app__flex"
+            data-clipboard-target=".coverLetter__text"
+          >
+            <MdCopyAll />
+          </button>
         </div>
-      )}
+        <p className="coverLetter__text">Your Cover Letter will appear here...</p>
+      </div>
     </>
   );
 }
