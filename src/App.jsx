@@ -6,7 +6,7 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="app app__flex">
+    <div className="app">
       <p className="app__logo">
         cover<span className="accent">ME</span>
       </p>

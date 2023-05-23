@@ -1,0 +1,66 @@
+form {
+  flex-flow: row wrap;
+  /* justify-content: space-between;
+    align-items: center; */
+}
+
+.form__head-text {
+  font-weight: 500;
+  margin: 0 0.3rem 0.4rem 0.3rem;
+  font-size: 0.95rem;
+}
+
+input {
+  width: 47.95%;
+  padding: 0.5rem;
+  font-family: var(--primary-font);
+  margin: 0.3rem;
+  /* border: none; */
+}
+input:focus-visible {
+  outline-style: none;
+}
+
+#skillset {
+  width: 100%;
+}
+
+textarea {
+  resize: none;
+  width: 100%;
+  margin: 0.3rem;
+  padding: 0.5rem;
+  font-family: var(--primary-font);
+}
+textarea:focus-visible {
+  outline-style: none;
+}
+
+.user-input {
+  border-radius: 4px;
+  border: 1.5px solid var(--primary);
+}
+
+.coverLetter__head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app__form-submit {
+  width: 100%;
+  margin: 0.6rem 0.3rem;
+  margin-bottom: 1rem;
+  background-color: var(--primary);
+  color: white;
+}
+.app__form-submit:hover {
+  background-color: var(--accent);
+}
+
+.copy-btn {
+  background-color: transparent;
+  border: 1px solid var(--accent);
+  padding: 0.2rem 0.5rem;
+}

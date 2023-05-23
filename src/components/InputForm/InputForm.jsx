@@ -1,18 +1,28 @@
 import React, { useState } from "react";
 
-// other modules
+// icons
+import { MdCopyAll } from "react-icons/md";
+
+// other custom modules
 import { getResponse } from "../../openAI_Service";
 
 // styles
 import "./InputForm.css";
 
+// instantiate ClipboardJS
+new ClipboardJS(".copy-btn");
+
 export default function InputForm() {
-  const [showCoverLetter, setShowCoverLetter] = useState(false);
-  const [coverLetterText, setCoverLetterText] = useState(null);
+  const [showCoverLetter, setShowCoverLetter] = useState(true);
+  // const [coverLetterText, setCoverLetterText] = useState(null);
+  const [coverLetterText, setCoverLetterText] = useState(
+    "lorem ipsum dolor sit amor lorem ipsum dolor sit amore kandak kodak huygen"
+  ); //testing
   const [formData, setFormData] = useState({
     job_profile: "",
     min_yoe: "",
     job_desc: "",
+    skillset: "",
   });
   // handle changes to the input fields
   function handleChange(e) {
@@ -36,43 +46,68 @@ export default function InputForm() {
   return (
     <>
       <div className="app_form-wrapper">
-        <h2 className="form__head">
-          Enter relevant details to generate Cover Letter
-        </h2>
-        <label htmlFor="profile"></label>
-        <input
-          type="text"
-          name="job_profile"
-          id="job_profile"
-          value={formData.job_profile}
-          onChange={handleChange}
-          placeholder="Job Profile"
-        />
-        <label htmlFor="min_yoe"></label>
-        <input
-          type="text"
-          name="min_yoe"
-          id="min_yoe"
-          placeholder="YOE"
-          value={formData.min_yoe}
-          onChange={handleChange}
-        />
-        <textarea
-          name="job_desc"
-          id="job_desc"
-          cols="30"
-          rows="10"
-          value={formData.job_desc}
-          onChange={handleChange}
-          placeholder="Copy the Job Description here"
-        />
+        <p className="form__head-text">
+          Enter relevant details to generate a cover letter
+        </p>
+        <form className="app__flex" action="">
+          <label htmlFor="profile"></label>
+          <input
+            type="text"
+            name="job_profile"
+            id="job_profile"
+            className="user-input"
+            value={formData.job_profile}
+            onChange={handleChange}
+            placeholder="Job Profile"
+          />
+          <label htmlFor="min_yoe"></label>
+          <input
+            type="text"
+            name="min_yoe"
+            id="min_yoe"
+            className="user-input"
+            placeholder="YOE"
+            value={formData.min_yoe}
+            onChange={handleChange}
+          />
+          <label htmlFor="skillset"></label>
+          <input
+            type="text"
+            name="skillset"
+            id="skillset"
+            className="user-input"
+            placeholder="e.g. React, Git..."
+            value={formData.skillset}
+            onChange={handleChange}
+          />
+          <textarea
+            name="job_desc"
+            id="job_desc"
+            className="user-input"
+            cols="30"
+            rows="10"
+            value={formData.job_desc}
+            onChange={handleChange}
+            placeholder="Copy the Job Description here"
+          />
+        </form>
       </div>
       <button className="app__form-submit" onClick={handleSubmit}>
         Generate Cover Letter
       </button>
       {showCoverLetter && (
-        <div className="app__coverLetter-wrapper">
-          <h3 className="coverLetter__head">Cover Letter</h3>
+        <div className="app__coverLetter-wrapper ">
+          <div className="coverLetter__head">
+            <h3 className="coverLetter__head-text">Cover Letter</h3>
+            {showCoverLetter && (
+              <button
+                className="copy-btn app__flex"
+                data-clipboard-target=".coverLetter__text"
+              >
+                <MdCopyAll />
+              </button>
+            )}
+          </div>
           <article className="coverLetter__text">{coverLetterText}</article>
         </div>
       )}

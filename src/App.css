@@ -1,10 +1,18 @@
 .app {
   flex-direction: column;
-  outline: 2px solid blue;
+  justify-content: flex-start;
+  /* outline: 2px solid blue; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 .app__logo {
   text-transform: lowercase;
+  font-family: var(--logo-font);
+  font-size: 2.7rem;
   font-weight: 700;
+  /* outline: 2px solid orange; */
 }
 
 .accent {
