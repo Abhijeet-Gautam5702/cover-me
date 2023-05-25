@@ -36,10 +36,7 @@ textarea:focus-visible {
   outline-style: none;
 }
 
-.user-input {
-  border-radius: 4px;
-  border: 1.5px solid var(--primary);
-}
+
 
 .app__coverLetter-wrapper{
   width: 100%;
@@ -58,16 +55,7 @@ textarea:focus-visible {
   text-align: justify;
 }
 
-.app__form-submit {
-  width: 100%;
-  margin: 0.6rem 0.3rem;
-  margin-bottom: 1rem;
-  background-color: var(--primary);
-  color: white;
-}
-.app__form-submit:hover {
-  background-color: var(--accent);
-}
+
 
 .copy-btn {
   background-color: transparent;

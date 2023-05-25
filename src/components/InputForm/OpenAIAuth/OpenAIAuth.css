@@ -1,0 +1,27 @@
+.app__openAIAuth-wrapper{
+    width: 100%;
+}
+
+.auth-headtext{
+    /* text-align: center; */
+    margin: 0.3rem;
+}
+
+.auth-form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.4rem;
+
+}
+.input-apiKey{
+    flex: 3;
+    width: 100%;
+    padding: 0.6rem;
+}
+.authenticate-btn{
+    flex: 1;
+    margin-bottom: 0;
+    margin-top: 0;
+}

@@ -12,7 +12,7 @@ import "./InputForm.css";
 // instantiate ClipboardJS
 new ClipboardJS(".copy-btn");
 
-export default function InputForm() {
+export default function InputForm({handleIsAuthenticated}) {
   // const [showCoverLetter, setShowCoverLetter] = useState(false);
   // const [coverLetterText, setCoverLetterText] = useState(null);
   const [formData, setFormData] = useState({
@@ -47,6 +47,7 @@ export default function InputForm() {
   return (
     <>
       <div className="app_form-wrapper">
+        <a onClick={()=>handleIsAuthenticated(false)}>Change API key</a>
         <p className="form__head-text">
           Enter relevant details to generate a cover letter
         </p>
@@ -77,7 +78,7 @@ export default function InputForm() {
             name="skillset"
             id="skillset"
             className="user-input"
-            placeholder="e.g. React, Git..."
+            placeholder="List your skills (e.g. Git, React, GraphQL etc.)"
             value={formData.skillset}
             onChange={handleChange}
           />
