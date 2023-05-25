@@ -51,16 +51,16 @@ a {
 }
 
 body {
-  outline: 2px solid red;
+  /* outline: 2px solid red; */
   margin: 0;
-  padding: 0.5rem;
+  /* padding: 0.5rem; */
   width: 500px;
   /* min-height: 100vh; */
   /* height: 80vh; */
   margin: auto;
-  background-color: var(--bgColor);
+  /* background-color: var(--bgColor); */
   color: var(--text);
-  box-shadow: 5px 5px 7px lightgray;
+  box-shadow: 0 0 10px lightgray;
   overflow-y: scroll;
 }
 

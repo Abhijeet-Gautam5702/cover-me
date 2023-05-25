@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 // custom modules
-import { setApiKeyFromUserInput } from "../../../openAI_Service";
+import { setApiKeyFromUserInput } from "../../openAI_Service";
 
 // styles
 import "./OpenAIAuth.css";
@@ -32,6 +32,7 @@ export default function OpenAIAuth({ handleIsAuthenticated }) {
         };
       });
       setApiKeyFromUserInput(apiKey);
+      // handleIsAuthenticated(true);
     }
   }, []);
 

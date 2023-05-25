@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // icons
 import { MdCopyAll } from "react-icons/md";
@@ -6,15 +6,21 @@ import { MdCopyAll } from "react-icons/md";
 // other custom modules
 import { getResponse } from "../../openAI_Service";
 
+// other components
+import Loader from "../Loader";
+
 // styles
 import "./InputForm.css";
 
 // instantiate ClipboardJS
 new ClipboardJS(".copy-btn");
 
-export default function InputForm({handleIsAuthenticated}) {
+export default function InputForm({ handleIsAuthenticated }) {
   // const [showCoverLetter, setShowCoverLetter] = useState(false);
   // const [coverLetterText, setCoverLetterText] = useState(null);
+
+  const [showLoader, setShowLoader] = useState(false);
+
   const [formData, setFormData] = useState({
     job_profile: "",
     min_yoe: "",
@@ -32,22 +38,28 @@ export default function InputForm({handleIsAuthenticated}) {
     });
   }
 
+  useEffect(() => {
+    document.querySelector(".coverLetter__text").innerHTML =
+      "Your Cover Letter will appear here";
+  }, []);
+
   // handle submit button
   async function handleSubmit() {
+    document.querySelector(".coverLetter__text").innerHTML = "";
+    setShowLoader(true);
     var response = await getResponse(formData);
+    setShowLoader(false);
+
     //regEx to remove first 2 <br> tags
     response = response.replace(/^(<br>){2}/, "");
-    // setShowCoverLetter(true);
-    document.querySelector(".coverLetter__text").innerHTML = response;
 
-    // setCoverLetterText(response);
-    // console.log(response);
+    document.querySelector(".coverLetter__text").innerHTML = response;
   }
 
   return (
     <>
       <div className="app_form-wrapper">
-        <a onClick={()=>handleIsAuthenticated(false)}>Change API key</a>
+        <a onClick={() => handleIsAuthenticated(false)}>Change API key</a>
         <p className="form__head-text">
           Enter relevant details to generate a cover letter
         </p>
@@ -103,11 +115,24 @@ export default function InputForm({handleIsAuthenticated}) {
           <button
             className="copy-btn app__flex"
             data-clipboard-target=".coverLetter__text"
+            title="Copy"
           >
             <MdCopyAll />
           </button>
         </div>
-        <p className="coverLetter__text">Your Cover Letter will appear here...</p>
+        <div
+          className="app__flex"
+          style={{
+            border: "1.5px solid var(--accent)",
+            borderRadius: "7px",
+            padding: "0.5rem",
+            paddingTop: 0,
+            marginTop: "0.5rem",
+          }}
+        >
+          {showLoader && <Loader />}
+          <p className="coverLetter__text"></p>
+        </div>
       </div>
     </>
   );
