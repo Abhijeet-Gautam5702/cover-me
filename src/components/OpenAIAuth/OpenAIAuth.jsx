@@ -46,8 +46,12 @@ export default function OpenAIAuth({ handleIsAuthenticated }) {
   }
 
   return (
-    <div className="app__openAIAuth-wrapper">
-      <p className="auth-headtext">Enter your free OpenAI API key</p>
+    <div className="w-full mt-10 lg:w-1/2  app__openAIAuth-wrapper">
+      {/* <h1 className="text-4xl mt-4 mb-10 font-extrabold text-center">
+        Sit back and Relax. <br />
+        We'll do it for you.
+      </h1> */}
+      <p className="font-semibold auth-headtext">Enter your free OpenAI API key (<a target="_blank" href="https://www.howtogeek.com/885918/how-to-get-an-openai-api-key/">How?</a> ) </p>
       <div className="auth-form">
         <input
           type="text"

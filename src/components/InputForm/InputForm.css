@@ -1,7 +1,5 @@
-form {
-  flex-flow: row wrap;
-  /* justify-content: space-between;
-    align-items: center; */
+.user-input{
+  resize: none;
 }
 
 .form__head-text {
@@ -50,8 +48,8 @@ textarea:focus-visible {
   align-items: center;
 }
 .coverLetter__text {
-  margin-top: 0.3rem ;
-  font-size: 0.85rem;
+  /* margin-top: 0.3rem ; */
+  /* font-size: 0.85rem; */
   text-align: justify;
 
 }

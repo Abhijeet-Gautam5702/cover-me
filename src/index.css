@@ -4,6 +4,12 @@
 
 
 @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 :root {
   /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
   font-family: var(--primary-font);
@@ -54,14 +60,16 @@ body {
   /* outline: 2px solid red; */
   margin: 0;
   /* padding: 0.5rem; */
-  width: 500px;
-  /* min-height: 100vh; */
+  width: 100%;
+  height: 100vh;
+  /* max-height: 100vh; */
+  min-height: 100vh;
   /* height: 80vh; */
-  margin: auto;
-  /* background-color: var(--bgColor); */
+  /* margin: auto; */
+  background-color: var(--bgColor);
   color: var(--text);
-  box-shadow: 0 0 10px lightgray;
-  overflow-y: scroll;
+  /* box-shadow: 0 0 10px lightgray; */
+  /* overflow-y: scroll; */
 }
 
 button {

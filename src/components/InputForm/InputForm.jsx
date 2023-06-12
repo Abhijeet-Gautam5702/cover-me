@@ -16,9 +16,6 @@ import "./InputForm.css";
 new ClipboardJS(".copy-btn");
 
 export default function InputForm({ handleIsAuthenticated }) {
-  // const [showCoverLetter, setShowCoverLetter] = useState(false);
-  // const [coverLetterText, setCoverLetterText] = useState(null);
-
   const [showLoader, setShowLoader] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -57,61 +54,67 @@ export default function InputForm({ handleIsAuthenticated }) {
   }
 
   return (
-    <>
-      <div className="app_form-wrapper">
-        <a onClick={() => handleIsAuthenticated(false)}>Change API key</a>
-        <p className="form__head-text">
-          Enter relevant details to generate a cover letter
-        </p>
-        <form className="app__flex" action="">
-          <label htmlFor="profile"></label>
-          <input
-            type="text"
-            name="job_profile"
-            id="job_profile"
-            className="user-input"
-            value={formData.job_profile}
-            onChange={handleChange}
-            placeholder="Job Profile"
-          />
-          <label htmlFor="min_yoe"></label>
-          <input
-            type="text"
-            name="min_yoe"
-            id="min_yoe"
-            className="user-input"
-            placeholder="YOE"
-            value={formData.min_yoe}
-            onChange={handleChange}
-          />
-          <label htmlFor="skillset"></label>
-          <input
-            type="text"
-            name="skillset"
-            id="skillset"
-            className="user-input"
-            placeholder="List your skills (e.g. Git, React, GraphQL etc.)"
-            value={formData.skillset}
-            onChange={handleChange}
-          />
-          <textarea
-            name="job_desc"
-            id="job_desc"
-            className="user-input"
-            cols="30"
-            rows="10"
-            value={formData.job_desc}
-            onChange={handleChange}
-            placeholder="Copy the Job Description here"
-          />
-        </form>
+    <div className=" lg:w-5/6 flex flex-row flex-wrap justify-start md:justify-between items-start">
+      <div className="w-full md:w-2/5 flex flex-col justify-stretch items-stretch">
+        <div className="w-full">
+          <a onClick={() => handleIsAuthenticated(false)}>Change API key</a>
+          <p className="form__head-text">
+            Enter relevant details to generate a cover letter
+          </p>
+          <form
+            className="flex flex-row flex-wrap justify-start items-stretch w-full"
+            action=""
+          >
+            <label htmlFor="profile"></label>
+            <input
+              type="text"
+              name="job_profile"
+              id="job_profile"
+              className="user-input flex-1 m-1 px-2 py-2 placeholder:text-sm text-sm"
+              value={formData.job_profile}
+              onChange={handleChange}
+              placeholder="Job Profile"
+            />
+            <label htmlFor="min_yoe"></label>
+            <input
+              type="text"
+              name="min_yoe"
+              id="min_yoe"
+              className="user-input flex-1 m-1 px-2 py-2 placeholder:text-sm text-sm"
+              placeholder="Years of Experience"
+              value={formData.min_yoe}
+              onChange={handleChange}
+            />
+            <label htmlFor="skillset"></label>
+            <input
+              type="text"
+              name="skillset"
+              id="skillset"
+              className="user-input w-1/2 m-1 px-2 py-2 placeholder:text-sm text-sm"
+              placeholder="List your skills (e.g. Git, React, GraphQL etc.)"
+              value={formData.skillset}
+              onChange={handleChange}
+            />
+            <textarea
+              name="job_desc"
+              id="job_desc"
+              className="user-input w-full m-1 px-2 py-2 placeholder:text-sm text-sm"
+              cols="30"
+              rows="10"
+              value={formData.job_desc}
+              onChange={handleChange}
+              placeholder="Copy the Job Description here"
+            />
+          </form>
+        </div>
+        <button className="m-1 app__form-submit" onClick={handleSubmit}>
+          Generate Cover Letter
+        </button>
       </div>
-      <button className="app__form-submit" onClick={handleSubmit}>
-        Generate Cover Letter
-      </button>
-      <div className="app__coverLetter-wrapper ">
+      {/* Display Cover Letter Section */}
+      <div className="w-full md:w-1/2 md:ml-1 mt-5 sm:mt-2 app__coverLetter-wrapper ">
         <div className="coverLetter__head">
-          <h3 className="coverLetter__head-text">Cover Letter</h3>
+          <h3 className="coverLetter__head-text font-bold">Cover Letter</h3>
           <button
             className="copy-btn app__flex"
             data-clipboard-target=".coverLetter__text"
@@ -124,16 +127,14 @@ export default function InputForm({ handleIsAuthenticated }) {
           className="app__flex"
           style={{
             border: "1.5px solid var(--accent)",
-            borderRadius: "7px",
-            padding: "0.5rem",
-            paddingTop: 0,
+            borderRadius: "5px",
             marginTop: "0.5rem",
           }}
         >
           {showLoader && <Loader />}
-          <p className="coverLetter__text"></p>
+          <p className="coverLetter__text text-sm  p-2"></p>
         </div>
       </div>
-    </>
+    </div>
   );
 }

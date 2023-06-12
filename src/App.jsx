@@ -16,16 +16,19 @@ function App() {
   }
 
   return (
-    <div className="app">
-      <DevLabel />
-      <p className="app__logo">
-        cover<span className="accent">ME</span>
-      </p>
-      {isAuthenticated == true ? (
-        <InputForm handleIsAuthenticated={handleIsAuthenticated} />
-      ) : (
-        <OpenAIAuth handleIsAuthenticated={handleIsAuthenticated} />
-      )}
+    <div className="min-h-screen flex flex-col justify-between">
+      <div className=" w-full flex flex-col justify-start items-center app">
+        <h1 className="mb-5 app__logo w-full text-center rounded-md  bg-green-200">
+          cover<span className="accent">ME</span>
+        </h1>
+        {/* <hr className="w-full  bg-black h-1" /> */}
+        {isAuthenticated == true ? (
+          <InputForm handleIsAuthenticated={handleIsAuthenticated} />
+        ) : (
+          <OpenAIAuth handleIsAuthenticated={handleIsAuthenticated} />
+        )}
+      </div>
+      {isAuthenticated && <DevLabel/>}
     </div>
   );
 }
